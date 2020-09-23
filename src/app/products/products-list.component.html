@@ -1,1 +1,22 @@
-<p>products-list works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of products">
+            <td>{{prod.id}}</td>
+            <td>{{prod.name}}</td>
+            <td>{{prod.description}}</td>
+            <td>{{prod.price | currency : 'ILS'}}</td>
+            <td>{{prod.quantity | quantityPipe}}</td>
+            <td>{{prod.location}}</td>
+        </tr>
+    </tbody>
+</table>
