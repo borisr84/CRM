@@ -20,6 +20,12 @@ export class ProductService {
     );
   }
 
+  getProductById(id: number) : Observable<IProduct> {
+    return this.getProducts().pipe(
+      map((prods : IProduct[]) => prods.find((p) => p.id === id))
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

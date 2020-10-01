@@ -1,0 +1,19 @@
+<h4>Product {{productId}}</h4>
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="Product Image">
+    <div class="card-body">
+        <div class="container">
+            <div *ngFor="let item of productDetails | keyvalue">
+                <div class="row">
+                    <div class="col-sm">
+                        {{item.key}}
+                    </div>
+                    <div class="col-sm">
+                        {{item.value}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="backEvent()">Back</button>
+</div>
