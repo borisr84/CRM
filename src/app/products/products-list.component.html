@@ -25,3 +25,8 @@
         </tr>
     </tbody>
 </table>
+<button class="btn btn-primary" (click)="onAddProductToggle()">{{isAdding ? 'Hide' : 'Show'}} Add</button>
+<div *ngIf='isAdding'>
+  <p></p>
+  <app-template-forms></app-template-forms>
+</div>

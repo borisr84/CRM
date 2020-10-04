@@ -6,9 +6,10 @@ import { QuantityPipe } from './quantity.pipe';
 import { ProductDetailsComponent } from './product-details.component';
 import { FormsModule } from '@angular/forms';
 
+import { TemplateFormsComponent } from '../forms/template-forms/template-forms.component';
 
 @NgModule({
-  declarations: [ProductsListComponent, QuantityPipe, ProductDetailsComponent],
+  declarations: [ProductsListComponent, QuantityPipe, ProductDetailsComponent, TemplateFormsComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -12,7 +12,7 @@ export class ProductsListComponent implements OnInit {
   filteredProducts : IProduct[];
   errorMsg : string;
   isFilterByStartsWith : boolean = true;
-  //filterBy : string;
+  isAdding : boolean = false;
 
   constructor(private prodService : ProductService) { }
 
@@ -48,6 +48,10 @@ export class ProductsListComponent implements OnInit {
   onFilterByToggle() {
     this.isFilterByStartsWith = !this.isFilterByStartsWith;
     this.filterBy = this._filterBy;
+  }
+
+  onAddProductToggle() {
+    this.isAdding = !this.isAdding;
   }
 
 }
