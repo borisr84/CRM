@@ -1,3 +1,10 @@
+<div class="grid">
+  <label>Filter by:</label>
+  <!-- <input type="text" [(ngModel)]="filterBy" (ngModelChange)="filterByChangeFn($event)"/> -->
+  <input type="text" [(ngModel)]="filterBy"/>
+  <button class="btn btn-primary" (click)="onFilterByToggle()">{{isFilterByStartsWith ? 'Starts with' : 'Contains'}} string</button>
+</div>
+<p></p>
 <table class="table">
     <thead>
       <tr>
@@ -8,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let prod of products">
+        <tr *ngFor="let prod of filteredProducts">
             <td>{{prod.id}}</td>
             <td><a [routerLink]="['/products', prod.id]">{{prod.name}}</a></td>
             <td>{{prod.description}}</td>
