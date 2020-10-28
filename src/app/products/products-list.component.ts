@@ -13,6 +13,7 @@ export class ProductsListComponent implements OnInit {
   errorMsg : string;
   isFilterByStartsWith : boolean = true;
   isAdding : boolean = false;
+  submitStatus : string;
 
   constructor(private prodService : ProductService) { }
 
@@ -52,6 +53,12 @@ export class ProductsListComponent implements OnInit {
 
   onAddProductToggle() {
     this.isAdding = !this.isAdding;
+  }
+
+  addProductHandler(newProd: IProduct)
+  {
+    console.log("New product event is received");
+    this.products.push(newProd);
   }
 
 }
