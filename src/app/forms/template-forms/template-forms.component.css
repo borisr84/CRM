@@ -4,6 +4,6 @@
     background-color: red;
 }
 
-input.ng-invalid.ng-touched {
+  form.submitted input.ng-invalid, input.ng-dirty.ng-invalid {
     border: 1px solid red;
   }
