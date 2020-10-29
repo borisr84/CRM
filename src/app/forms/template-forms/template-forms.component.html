@@ -1,67 +1,44 @@
 <div class="row">
     <div class="col-xs-12">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
         <div class="row">
           <div class="col-sm-2 form-group">
             <label for="prodId">Id</label>
-            <input
-              type="text"
-              id="prodId"
-              class="form-control"
-              name="prodId"
-              ngModel
-              required>
+            <input type="number" name="id" id="prodId" #prodId="ngModel" class="form-control" [(ngModel)]="id" required>
           </div>
+          <div *ngIf="!prodId?.valid && (prodId?.dirty || prodId?.touched)">
+            Id is required
+          </div>
+
           <div class="col-sm-2 form-group">
             <label for="prodName">Name</label>
-            <input
-              type="text"
-              id="prodName"
-              class="form-control"
-              name="prodName"
-              ngModel>
+            <input type="text" name="prodName" id="prodName" #prodName="ngModel" class="form-control" [(ngModel)]="name" required>
           </div>
+          <div *ngIf="!prodName?.valid && (prodName?.dirty || prodName?.touched)">
+            Name is required
+          </div>
+
           <div class="col-sm-2 form-group">
             <label for="prodDescription">Description</label>
-            <input
-              type="text"
-              id="prodDescription"
-              class="form-control"
-              name="prodDescription"
-              ngModel>
+            <input type="text" name="prodDescription" id="prodDescription" class="form-control" [(ngModel)]="desc" required>
           </div>
           <div class="col-sm-2 form-group">
             <label for="prodPrice">Price</label>
-            <input
-              type="number"
-              id="prodPrice"
-              class="form-control"
-              name="prodPrice"
-              ngModel>
+            <input type="number" name="prodPrice" id="prodPrice" class="form-control" [(ngModel)]="price" required>
           </div>
           <div class="col-sm-2 form-group">
             <label for="prodQuantity">Quantity</label>
-            <input
-              type="number"
-              id="prodQuantity"
-              class="form-control"
-              name="prodQuantity"
-              ngModel>
+            <input type="number" name="prodQuantity" id="prodQuantity" class="form-control" [(ngModel)]="quantity" required>
           </div>
           <div class="col-sm-2 form-group">
             <label for="prodLocation">Location</label>
-            <input
-              type="text"
-              id="prodLocation"
-              class="form-control"
-              name="prodLocation"
-              ngModel>
+            <input type="text" name="prodLocation" id="prodLocation" class="form-control" [(ngModel)]="location" required>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <button class="btn btn-success" type="submit">Add</button>
-            <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
+            <button class="btn btn-primary" type="button" (click)="onClear(f)">Clear</button>
           </div>
         </div>
       </form>

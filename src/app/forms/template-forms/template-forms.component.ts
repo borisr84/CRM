@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { stringify } from 'querystring';
+
 import { IProduct } from './../..//products/IProduct';
 import { Product } from './../../products/Product';
 
@@ -8,28 +10,26 @@ import { Product } from './../../products/Product';
   templateUrl: './template-forms.component.html',
   styleUrls: ['./template-forms.component.css']
 })
-export class TemplateFormsComponent implements OnInit {
+export class TemplateFormsComponent {
+  id : number = 1; //Add validation that id does not repeat itself
+  name : string = "";
+  desc : string = "something";
+  price : number; //Add validation for correct price representation
+  quantity : number; //Add validation that number is actually an integer
+  location : string; //ToDo - Change this to combo
+
   @Output() addProductEvent = new EventEmitter<IProduct>();
 
-  ngOnInit(): void {
-  }
-
-  @ViewChild('f') courseForm: NgForm;
-
-  //ToDo - Add verification that all fields are filled in
-  onSubmit(form: NgForm) {
-    let curProdFormDetails = form.value;
-
-    this.addProductEvent.emit(new Product
-      (curProdFormDetails.prodId, curProdFormDetails.prodName, curProdFormDetails.prodDescription, curProdFormDetails.prodQuantity,
-        curProdFormDetails.prodPrice, curProdFormDetails.prodLocation));
+  onSubmit(form : NgForm) {
+    let prod = new Product(this.id, this.name, this.desc, this.quantity, this.price, this.location);
+    this.addProductEvent.emit(prod);
 
     console.log("New product add event is sent");
-    this.onClear();
+    this.onClear(form);
   }
 
-  onClear() {
+  onClear(form : NgForm) {
     // Now that we have access to the form via the 'ViewChild', we can access the form and clear it.
-    this.courseForm.reset();
+    form.reset();
   }
 }

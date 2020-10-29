@@ -17,5 +17,7 @@ export class Product implements IProduct
         public price: number,
         public location: string)
     {
+        this.id = id;
+        this.name = name;
     }
 }
