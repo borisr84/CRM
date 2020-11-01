@@ -28,5 +28,5 @@
 <button class="btn btn-primary" (click)="onAddProductToggle()">{{isAdding ? 'Hide' : 'Show'}} Add</button>
 <div *ngIf='isAdding'>
   <p></p>
-  <app-template-forms (addProductEvent)="addProductHandler($event)"></app-template-forms>
+  <app-reactive-forms (addProductEvent)="addProductHandler($event)"></app-reactive-forms>
 </div>

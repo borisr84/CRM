@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-2 form-group">
+            <label for="prodId">Id</label>
+            <input type="number" formControlName="id" id="prodId" class="form-control">
+          </div>
+          
+          <div class="col-sm-2 form-group">
+            <label for="prodName">Name</label>
+            <input type="text" formControlName="prodName" id="prodName" class="form-control">
+          </div>
+
+          <div class="col-sm-2 form-group">
+            <label for="prodDescription">Description</label>
+            <input type="text" formControlName="prodDescription" id="prodDescription" class="form-control">
+          </div>
+
+          <div class="col-sm-2 form-group">
+            <label for="prodPrice">Price</label>
+            <input type="number" formControlName="prodPrice" id="prodPrice" class="form-control">
+          </div>
+
+          <div class="col-sm-2 form-group">
+            <label for="prodQuantity">Quantity</label>
+            <input type="number" formControlName="prodQuantity" id="prodQuantity" class="form-control">
+          </div>
+
+          <div class="col-sm-2 form-group">
+            <label for="prodLocation">Location</label>
+            <input type="text" formControlName="prodLocation" id="prodLocation" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn btn-success" type="submit" [disabled]="!form.valid">Add</button>
+            <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
