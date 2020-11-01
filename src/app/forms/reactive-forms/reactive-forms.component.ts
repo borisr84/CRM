@@ -11,9 +11,14 @@ import { Product } from 'src/app/products/Product';
 export class ReactiveFormsComponent {
 
     form: FormGroup;
+    control: FormControl;
+
     @Output() addProductEvent = new EventEmitter<IProduct>();
     
     constructor(fb: FormBuilder) {
+        
+        this.control = fb.control('', Validators.required);
+
         this.form = fb.group({
             id: new FormControl("", Validators.required),
             prodName: new FormControl("", Validators.required),

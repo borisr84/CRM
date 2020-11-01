@@ -10,8 +10,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { TemplateFormsComponent } from '../forms/template-forms/template-forms.component';
 import { ReactiveFormsComponent } from '../forms/reactive-forms/reactive-forms.component';
 
+import { ControlErrorsDirective } from '../forms/reactive-forms/validations/control-errors.directive';
+import { ControlErrorComponent } from '../forms/reactive-forms/validations/control-error.component';
+import { ControlErrorContainerDirective } from '../forms/reactive-forms/validations/control-error-container.directive';
+import { FormSubmitDirective } from '../forms/reactive-forms/validations/form-submit.directive';
+
 @NgModule({
-  declarations: [ProductsListComponent, QuantityPipe, ProductDetailsComponent, TemplateFormsComponent, ReactiveFormsComponent],
+  declarations: [ProductsListComponent, QuantityPipe, ProductDetailsComponent, TemplateFormsComponent, ReactiveFormsComponent, 
+    ControlErrorsDirective, ControlErrorComponent, ControlErrorContainerDirective, FormSubmitDirective],
+  entryComponents: [ControlErrorComponent],
   imports: [
     CommonModule,
     FormsModule,
