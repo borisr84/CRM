@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from './IProduct';
 import { ProductService } from './product.service'
 
+//ToDo:
+//1. Change new product form to be in a popup window
+//2. Add login information: Only admin will be able to manage products
+//3. Add product delete functionality
+//4. Add following controls: Combobox, Radiobuttons, Checkboxes, Toggle buttons
+
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -28,10 +34,6 @@ export class ProductsListComponent implements OnInit {
       }
     )
   }
-
-  // filterByChangeFn(value : string) {
-  //   this.filteredProducts = this.products.filter((p : IProduct) => p.name.toLowerCase().includes(value.toLowerCase()));
-  // }
 
   private _filterBy : string;
   get filterBy() : string{
