@@ -20,8 +20,7 @@
             <td><a [routerLink]="['/products', prod.id]">{{prod.name}}</a></td>
             <td>{{prod.description}}</td>
             <td>{{prod.price | currency : 'ILS'}}</td>
-            <!-- <td>{{prod.quantity | quantityPipe}}</td>
-            <td>{{prod.location}}</td> -->
+            <td><button (click)="onDelete(prod.id)">Delete</button></td>
         </tr>
     </tbody>
 </table>
