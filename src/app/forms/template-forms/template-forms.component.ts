@@ -21,7 +21,7 @@ export class TemplateFormsComponent {
   @Output() addProductEvent = new EventEmitter<IProduct>();
 
   onSubmit(form : NgForm) {
-    let prod = new Product(this.id, this.name, this.desc, this.quantity, this.price, this.location);
+    let prod = new Product(this.name, this.desc, this.quantity, this.price, this.location);
     this.addProductEvent.emit(prod);
 
     console.log("New product add event is sent");

@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
-    "name": "Product 1",
-    "description": "This is the first product",
-    "price": 19.56,
-    "quantity": 4,
-    "location": "Haifa"
+    "Id": 1,
+    "Name": "Product 1",
+    "Description": "This is the first product",
+    "Price": 19.56,
+    "Quantity": 4,
+    "Location": "Haifa"
   },
   {
-    "id": 2,
-    "name": "Product 2",
-    "description": "This is the second product",
-    "price": 13.50,
-    "quantity": 2,
-    "location": "Tel Aviv"
+    "Id": 2,
+    "Name": "Product 2",
+    "Description": "This is the second product",
+    "Price": 13.50,
+    "Quantity": 2,
+    "Location": "Tel Aviv"
   }
 ]

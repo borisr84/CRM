@@ -13,6 +13,8 @@ export class ReactiveFormsComponent {
     form: FormGroup;
     control: FormControl;
 
+    //Experimenting with sharing data from child to parent
+    //Alternatively, we could use prdoucts service to store the data there
     @Output() addProductEvent = new EventEmitter<IProduct>();
     
     constructor(fb: FormBuilder) {
@@ -20,9 +22,9 @@ export class ReactiveFormsComponent {
         this.control = fb.control('', Validators.required);
 
         this.form = fb.group({
-            id: new FormControl("", Validators.required),
+            id: new FormControl(""),
             prodName: new FormControl("", Validators.required),
-            prodQuantity: new FormControl(""),
+            prodQuantity: new FormControl("", Validators.required),
             prodPrice: new FormControl("", Validators.required),
             prodDescription: new FormControl("", Validators.required),
             prodLocation: new FormControl("", Validators.required),
@@ -30,7 +32,7 @@ export class ReactiveFormsComponent {
     }
 
     onSubmit() {
-      let prod = new Product(this.form.get('id').value, 
+      let prod = new Product( 
       this.form.get('prodName').value, 
       this.form.get('prodDescription').value, 
       this.form.get('prodQuantity').value, 
@@ -38,9 +40,9 @@ export class ReactiveFormsComponent {
       this.form.get('prodLocation').value);
       this.addProductEvent.emit(prod);
 
-      console.log(`Product to add: ID=${prod.id}, Name=${prod.name}, Description=${prod.description},
-        Quantity=${prod.quantity}, Price=${prod.price}, Location=${prod.location}`);
-      this.onClear();
+      console.log(`Product to add: Name=${prod.Name}, Description=${prod.Description},
+        Quantity=${prod.Quantity}, Price=${prod.Price}, Location=${prod.Location}`);
+      //this.onClear(); //ToDo - Clear only upon success from back-end, hence this should be moved to a different locationnpm
     }
   
     onClear() {

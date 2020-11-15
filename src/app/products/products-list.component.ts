@@ -15,7 +15,7 @@ import { ProductService } from './product.service'
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  products : IProduct[];
+  products : IProduct[]; //ToDo - Move this to products service
   filteredProducts : IProduct[];
   errorMsg : string;
   isFilterByStartsWith : boolean = true;
@@ -32,18 +32,17 @@ export class ProductsListComponent implements OnInit {
           this.filteredProducts = prods;
         },
         error: err => this.errorMsg = err
-      }
-    )
+      })
   }
 
   private getFiltered(filterBy : string) : IProduct[]
   {
     if (filterBy === null || filterBy === undefined)
-      return this.filteredProducts;
+      return this.products;
 
     return this.products.filter((p : IProduct) => this.isFilterByStartsWith ? 
-    p.name.toLowerCase().startsWith(filterBy.toLowerCase()) : 
-    p.name.toLowerCase().includes(filterBy.toLowerCase()))
+    p.Name.toLowerCase().startsWith(filterBy.toLowerCase()) : 
+    p.Name.toLowerCase().includes(filterBy.toLowerCase()))
   }
 
   private _filterBy : string;
@@ -66,8 +65,17 @@ export class ProductsListComponent implements OnInit {
   }
 
   onDelete(prodId : number) {
-    this.products = this.products.filter(x => x.id !== prodId);
-    this.filteredProducts =  this.getFiltered(this._filterBy);
+    this.prodService.deleteProduct(prodId).subscribe(
+      prods => this.prodService.getProducts().subscribe(
+          {
+            next: prods => {
+              this.products = prods;
+              this.filteredProducts =  this.getFiltered(this._filterBy);
+            },
+            error: err => this.errorMsg = err
+          }),
+      err => console.log(`Failed to delete product with Id = ${prodId}. Error=${err}`)
+    )
 
     console.log(`Product ID = ${prodId} is deleted`);
   }
@@ -76,8 +84,15 @@ export class ProductsListComponent implements OnInit {
   {
     console.log("New product event is received");
 
-    this.products.push(newProd);
-    this.filteredProducts =  this.getFiltered(this._filterBy);
+    this.prodService.addProduct(newProd).subscribe(
+      res => {
+        this.products.push(res);
+        this.filteredProducts =  this.getFiltered(this._filterBy);
+      },
+      err => console.log(`Error adding item ${JSON.stringify(newProd)}`)
+    )  
+
+    console.log(`Product = ${JSON.stringify(newProd)} is added`);
   }
 
 }

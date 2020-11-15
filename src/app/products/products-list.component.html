@@ -15,12 +15,12 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let prod of filteredProducts">
-            <td>{{prod.id}}</td>
-            <td><a [routerLink]="['/products', prod.id]">{{prod.name}}</a></td>
-            <td>{{prod.description}}</td>
-            <td>{{prod.price | currency : 'ILS'}}</td>
-            <td><button (click)="onDelete(prod.id)">Delete</button></td>
+        <tr *ngFor="let prod of filteredProducts"> <!--ToDo - Add verification and appropriate message when no connection to server -->
+            <td>{{prod.Id}}</td>
+            <td><a [routerLink]="['/products', prod.Id]">{{prod.Name}}</a></td>
+            <td>{{prod.Description}}</td>
+            <td>{{prod.Price | currency : 'ILS'}}</td>
+            <td><button (click)="onDelete(prod.Id)">Delete</button></td>
         </tr>
     </tbody>
 </table>

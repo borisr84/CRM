@@ -2,22 +2,13 @@ import { IProduct } from './IProduct';
 
 export class Product implements IProduct
 {
-    // public id: number;
-    // public name: string;
-    // public description: string;
-    // public quantity: number;
-    // public price: number;
-    // public location: string;
-
     constructor(
-        public id: number,
-        public name: string,
-        public description: string,
-        public quantity: number,
-        public price: number,
-        public location: string)
+        public Name: string,
+        public Description: string,
+        public Price: number,
+        public Quantity: number,
+        public Location: string)
     {
-        this.id = id;
-        this.name = name;
+        this.Name = Name;
     }
 }
